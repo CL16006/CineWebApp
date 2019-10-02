@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pelicula</title>
+    </h:head>
+    <h:body>
+         <p:panel id="panel1">
+                <h:form id="frm1">
+                    <p:dataTable id="tabla1" lazy="true" var="p" value="#{peliculaBean.peliculaLDM}" paginator="true"
+                             selectionMode="single" selection="#{peliculaBean.pelicula}" rowKey="#{p.idPelicula}" rows="3">
+                    <p:ajax event="rowSelect" listener="#{peliculaBean.onRowSelect}" update=":frm2"/>
+                    
+                    <p:column headerText="ID">
+                        <h:outputText value="#{p.idPelicula}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="CLASIFICACION">
+                        <h:outputText value="#{p.idClasificacion.clasificacion}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="DIRECTOR">
+                        <h:outputText value="#{p.idDirector.nombre} #{p.idDirector.apellido}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="TITULO">
+                        <h:outputText value="#{p.titulo}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="DURACION">
+                        <h:outputText value="#{p.duracion}"></h:outputText>
+                    </p:column>
+                    <p:column headerText="FECHA ESTRENO">
+                        <h:outputText value="#{p.fechaEstreno}"></h:outputText>
+                    </p:column>                    
+                </p:dataTable>
+        </h:form>  
+        </p:panel>
+        <p:panel id="panel2">        
+            <h:form id="frm2">
+                <p:growl id="message" showDetail="true" life="6000"></p:growl>
+                <p:tabView>
+                    <p:tab title="pelicula">
+                         <p:growl id="message" showDetail="true" life="2000"></p:growl>
+                        <p:panelGrid columns="2" id="datos">
+                            <h:outputLabel for="idPelicula" value="Id Pelicula"></h:outputLabel>
+                            <p:inputText id="idPelicula" value="#{peliculaBean.pelicula.idPelicula}">
+                                <f:convertNumber for="idPelicula"></f:convertNumber></p:inputText>
+                            <h:outputLabel for="idClasificacion" value="Clasificacion"></h:outputLabel>    
+                            <p:selectOneMenu id="idClasificacion" value="#{peliculaBean.clSelected}" >
+                              
+                                <f:selectItems value="#{peliculaBean.listaClasificacion}" itemLabel="#{c.clasificacion}"
+                                               var="c" itemValue="#{c}">
+                                    </f:selectItems>
+                                
+                            </p:selectOneMenu>
+                            <h:outputLabel for="idDirector" value="Director"></h:outputLabel>
+                            <p:selectOneMenu id="idDirector" value="#{peliculaBean.listaDirector}">
+                                
+                                <f:selectItems value="#{peliculaBean.listaDirector}" var="d" itemLabel="#{d.nombre} #{d.apellido}"
+                                               itemValue="#{d}">
+                                  </f:selectItems>
+                            </p:selectOneMenu>
+                            <h:outputLabel for="titulo" value="Titulo"></h:outputLabel>
+                            <p:inputText id="titulo" value="#{peliculaBean.pelicula.titulo}"></p:inputText>
+                            <h:outputLabel for="Duracion" value="Duracion"></h:outputLabel>
+                            <p:inputText id="Duracion" value="#{peliculaBean.pelicula.duracion}"></p:inputText>
+                            <h:outputLabel for="Fecha" value="Fecha de Estreno"></h:outputLabel>
+                            <p:datePicker id="Fecha" value="#{peliculaBean.pelicula.fechaEstreno}"></p:datePicker>
+                            <h:outputLabel for="sinopsis" value="Sinopsis"></h:outputLabel>
+                            <p:inputText id="sinopsis" value="#{peliculaBean.pelicula.sinopsis}"></p:inputText>
+                        </p:panelGrid>
+                        <p:commandButton actionListener="#{peliculaBean.crear}" value="Crear" update="datos, message"></p:commandButton>
+                        <p:commandButton actionListener="#{peliculaBean.modificar}" value="Modificar" update=":frm1, message"></p:commandButton>
+                        <p:commandButton actionListener="#{peliculaBean.eliminar}" value="Eliminar" update=":frm1, message"></p:commandButton>
+                    </p:tab>
+                    <p:tab title="Genero">
+                        <p:dataTable id="tablaGenero" value="#{generoBean.generoLDM}" lazy="true" selectionMode="single"
+                                     paginator="true" selection="#{generoBean.genero}" var="g" rowKey="#{g.idGenero}" rows="3">
+                            
+                            <p:column headerText="ID">
+                                <h:outputText value="#{g.idGenero}"></h:outputText>
+                            </p:column>
+                            <p:column headerText="NOMBRE">
+                                <h:outputText value="#{g.nombre}"></h:outputText>
+                            </p:column>
+                            <p:column headerText="Descripcion">
+                                <h:outputText value="#{g.descripcion}"></h:outputText>
+                            </p:column>
+                            <p:column headerText="ACTIVO">
+                                <h:outputText value="#{g.activo}"></h:outputText>
+                            </p:column>
+                        </p:dataTable>
+
+                    </p:tab>
+                    <p:tab title="Clasificacion">
+                        
+                    </p:tab>
+                    <p:tab title="Director">
+                        
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
