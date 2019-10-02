@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="cinePU" transaction-type="JTA">
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.OrdenConsumible</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Orden</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Pelicula</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Director</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.MenuConsumible</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.AsientoSala</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.AtributoSala</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Descuento</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.CaracteristicaFuncion</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.AtributoFuncion</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Sucursal</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Genero</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.CaracteristicaAsiento</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Asiento</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Sala</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.AtributoAsiento</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Pago</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.TipoPago</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Funcion</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Factura</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.TipoDescuento</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Boleto</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.CaracteristicaSala</class>
+    <class>ues.occ.edu.sv.prn335.cineweb.control.entity.Clasificacion</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <jta-data-source>jdbc/cine</jta-data-source>
+  </persistence-unit>
+</persistence>
